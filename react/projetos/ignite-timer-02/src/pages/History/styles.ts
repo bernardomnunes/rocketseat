@@ -7,6 +7,8 @@ export const HistoryContainer = styled.main`
   display: flex;
   flex-direction: column;
 
+  overflow: hidden;
+
   h1 {
     font-size: 1.5rem;
     color: ${(props) => props.theme['gray-100']};
@@ -15,8 +17,22 @@ export const HistoryContainer = styled.main`
 
 export const HistoryList = styled.div`
   flex: 1;
-  overflow: auto;
   margin-top: 2rem;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${props=> props.theme.white};
+    border-radius: 8px;        /* color of the tracking area */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${props=> props.theme['green-300']};    /* color of the scroll thumb */
+    border-radius: 8px;       /* roundness of the scroll thumb */
+  }
 
   table {
     width: 100%;
