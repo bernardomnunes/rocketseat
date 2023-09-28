@@ -63,6 +63,14 @@
       "type": "income",
       "createdAt": "2023-07-19T00:17:22.142Z",
       "id": 8
+    },
+    {
+      "description": "Sushi",
+      "price": 100,
+      "category": "comida",
+      "type": "outcome",
+      "createdAt": "2023-09-28T14:07:37.363Z",
+      "id": 9
     }
   ]
 }
