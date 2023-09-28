@@ -82,7 +82,7 @@ export function App() {
             <div className="space-y-1">
               <Label>Prompt</Label>
               <PromptSelect onPromptSelected={setInput} />
-            </div>
+            </div> 
 
             <div className="space-y-1">
               <Label>Modelo</Label>
