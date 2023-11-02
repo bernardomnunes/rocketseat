@@ -90,9 +90,9 @@ const config: Config = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       fontSize: {
-        sm: '3rem',
-        base: '3.5rem',
-        lg: '4rem',
+        sm: '0.75rem',
+        base: '0.875rem',
+        lg: '1rem',
       },
     },
   },
