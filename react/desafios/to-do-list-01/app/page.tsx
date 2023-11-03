@@ -1,7 +1,8 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { PlusCircle, ClipboardList } from 'lucide-react'
+import { Checkbox } from '@/components/ui/checkbox'
+import { PlusCircle, ClipboardList, Check } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -12,7 +13,9 @@ interface TasksType {
 }
 
 export default function Home() {
-  const [tasks, setTasks] = useState<TasksType[]>([])
+  const [tasks, setTasks] = useState<TasksType[]>([
+    { description: 'jfdlksajfldas', id: 'fldkjsafjdsal', isDone: true },
+  ])
 
   return (
     <>
@@ -54,7 +57,9 @@ export default function Home() {
           </div>
 
           {tasks.length ? (
-            <h1>hello</h1>
+            <div className="flex items-start bg-gray-500 p-4">
+              <Checkbox className="border-blue data-[state=checked]:border-purple-dark data-[state=checked]:bg-purple-dark rounded-full border-2 h-[18px] w-[18px]" />
+            </div>
           ) : (
             <>
               <div className="h-px w-full bg-gray-400 mt-6" />
