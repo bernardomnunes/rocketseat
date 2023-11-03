@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { PlusCircle, ClipboardList, Check } from 'lucide-react'
+import { PlusCircle, ClipboardList, Trash2 } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 
@@ -57,8 +57,23 @@ export default function Home() {
           </div>
 
           {tasks.length ? (
-            <div className="flex items-start bg-gray-500 p-4">
-              <Checkbox className="border-blue data-[state=checked]:border-purple-dark data-[state=checked]:bg-purple-dark rounded-full border-2 h-[18px] w-[18px]" />
+            <div className="flex items-start gap-4 justify-between bg-gray-500 p-4 rounded-[8px] mt-6">
+              <Checkbox
+                className="border-blue data-[state=checked]:border-purple-dark data-[state=checked]:bg-purple-dark rounded-full border-2 h-[18px] w-[18px] mt-2 "
+                id="taskCheckbox"
+              />
+              <label
+                htmlFor="taskCheckbox"
+                className="text-start text-gray-100"
+              >
+                Integer urna interdum massa libero auctor neque turpis turpis
+                semper. Duis vel sed fames integer.
+              </label>
+              <Trash2
+                className="text-gray-300 min-w-[18px] min-h-[18px] mt-1"
+                width={18}
+                height={18}
+              />
             </div>
           ) : (
             <>
@@ -67,7 +82,7 @@ export default function Home() {
               <div className="flex flex-col items-center text-gray-300 text-center">
                 <ClipboardList width={56} height={56} className=" mt-16 mb-4" />
 
-                <strong>Você ainda não tem tarefas cadastradas</strong>
+                <label>Você ainda não tem tarefas cadastradas</label>
                 <p>Crie tarefas e organize seus itens a fazer</p>
               </div>
             </>
