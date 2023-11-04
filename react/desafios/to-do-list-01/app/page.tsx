@@ -30,14 +30,11 @@ export default function Home() {
     setTasks(newTasks)
   }
 
-  // function handleDeleteTask(id: string) {
-  //   const newTasks = tasks.filter((task) => {
-  //     if (task.id === id) {
-
-  //     }
-  //     return task
-  //   })
-  // }
+  function handleDeleteTask(id: string) {
+    console.log(id)
+    const newTasks = tasks.filter((task) => task.id !== id)
+    setTasks(newTasks)
+  }
 
   return (
     <>
@@ -97,7 +94,11 @@ export default function Home() {
                   >
                     {description}
                   </label>
-                  <button className="group hover:bg-gray-400 p-1 leading-none rounded">
+
+                  <button
+                    className="group hover:bg-gray-400 p-1 leading-none rounded"
+                    onClick={() => handleDeleteTask(id)}
+                  >
                     <Trash2
                       className="text-gray-300 min-w-[18px] min-h-[18px] group-hover:text-danger"
                       width={18}
