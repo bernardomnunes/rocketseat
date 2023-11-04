@@ -14,7 +14,9 @@ interface TasksType {
 
 export default function Home() {
   const [tasks, setTasks] = useState<TasksType[]>([
-    { description: 'jfdlksajfldas', id: 'fldkjsafjdsal', isDone: false },
+    { description: 'comer', id: 'comer', isDone: false },
+    { description: 'estudar', id: 'estudar', isDone: false },
+    { description: 'programar', id: 'programar', isDone: false },
   ])
 
   function handleChangeChecked(id: string) {
@@ -26,6 +28,15 @@ export default function Home() {
     })
 
     setTasks(newTasks)
+  }
+
+  function handleDeleteTask(id: string) {
+    const newTasks = tasks.filter((task) => {
+      if (task.id === id) {
+        return
+      }
+      return task
+    })
   }
 
   return (
@@ -76,12 +87,12 @@ export default function Home() {
                 >
                   <Checkbox
                     className="border-blue data-[state=checked]:border-purple-dark data-[state=checked]:bg-purple-dark rounded-full border-2 h-[18px] w-[18px] mt-1 "
-                    id="taskCheckbox"
+                    id={id}
                     checked={isDone}
-                    onClick={() => handleChangeChecked(id)}
+                    onCheckedChange={() => handleChangeChecked(id)}
                   />
                   <label
-                    htmlFor="taskCheckbox"
+                    htmlFor={id}
                     className="text-start text-gray-100 cursor-pointer"
                   >
                     {description}
