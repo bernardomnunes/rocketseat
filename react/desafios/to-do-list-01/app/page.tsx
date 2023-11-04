@@ -14,8 +14,19 @@ interface TasksType {
 
 export default function Home() {
   const [tasks, setTasks] = useState<TasksType[]>([
-    { description: 'jfdlksajfldas', id: 'fldkjsafjdsal', isDone: true },
+    { description: 'jfdlksajfldas', id: 'fldkjsafjdsal', isDone: false },
   ])
+
+  function handleChangeChecked(id: string) {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return { ...task, isDone: !task.isDone }
+      }
+      return task
+    })
+
+    setTasks(newTasks)
+  }
 
   return (
     <>
@@ -57,24 +68,34 @@ export default function Home() {
           </div>
 
           {tasks.length ? (
-            <div className="flex items-start gap-4 justify-between bg-gray-500 p-4 rounded-[8px] mt-6">
-              <Checkbox
-                className="border-blue data-[state=checked]:border-purple-dark data-[state=checked]:bg-purple-dark rounded-full border-2 h-[18px] w-[18px] mt-2 "
-                id="taskCheckbox"
-              />
-              <label
-                htmlFor="taskCheckbox"
-                className="text-start text-gray-100"
-              >
-                Integer urna interdum massa libero auctor neque turpis turpis
-                semper. Duis vel sed fames integer.
-              </label>
-              <Trash2
-                className="text-gray-300 min-w-[18px] min-h-[18px] mt-1"
-                width={18}
-                height={18}
-              />
-            </div>
+            tasks.map(({ description, id, isDone }) => {
+              return (
+                <div
+                  className="flex items-start gap-4 justify-between bg-gray-500 p-4 rounded-[8px] mt-6"
+                  key={id}
+                >
+                  <Checkbox
+                    className="border-blue data-[state=checked]:border-purple-dark data-[state=checked]:bg-purple-dark rounded-full border-2 h-[18px] w-[18px] mt-1 "
+                    id="taskCheckbox"
+                    checked={isDone}
+                    onClick={() => handleChangeChecked(id)}
+                  />
+                  <label
+                    htmlFor="taskCheckbox"
+                    className="text-start text-gray-100 cursor-pointer"
+                  >
+                    {description}
+                  </label>
+                  <button className="group hover:bg-gray-400 p-1 leading-none rounded">
+                    <Trash2
+                      className="text-gray-300 min-w-[18px] min-h-[18px] group-hover:text-danger"
+                      width={18}
+                      height={18}
+                    />
+                  </button>
+                </div>
+              )
+            })
           ) : (
             <>
               <div className="h-px w-full bg-gray-400 mt-6" />
