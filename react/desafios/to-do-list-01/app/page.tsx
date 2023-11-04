@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { PlusCircle, ClipboardList, Trash2 } from 'lucide-react'
 import Image from 'next/image'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 interface TasksType {
   id: string
@@ -13,11 +14,21 @@ interface TasksType {
 }
 
 export default function Home() {
-  const [tasks, setTasks] = useState<TasksType[]>([
-    { description: 'comer', id: 'comer', isDone: false },
-    { description: 'estudar', id: 'estudar', isDone: false },
-    { description: 'programar', id: 'programar', isDone: false },
-  ])
+  const [tasks, setTasks] = useState<TasksType[]>([])
+  const [taskInput, setTaskInput] = useState('')
+
+  function handleAddTask(event: FormEvent) {
+    event.preventDefault()
+
+    setTasks((state) => [
+      ...state,
+      { id: uuidv4(), description: taskInput, isDone: false },
+    ])
+
+    setTaskInput('')
+  }
+
+  const amountDoneTasks = tasks.filter((task) => task.isDone).length
 
   function handleChangeChecked(id: string) {
     const newTasks = tasks.map((task) => {
@@ -43,17 +54,25 @@ export default function Home() {
       </header>
 
       <div className="max-w-[736px] mx-auto px-4">
-        <div className="grid gap-2 mt-[-27px] md:grid-cols-6 max-md:grid-rows-2">
+        <form
+          className="grid gap-2 mt-[-27px] md:grid-cols-6 max-md:grid-rows-2"
+          onSubmit={handleAddTask}
+        >
           <input
             type="text"
+            value={taskInput}
+            onChange={(e) => setTaskInput(e.target.value)}
             placeholder="Adicione uma nova tarefa"
             className="bg-gray-500 text-gray-100 p-4 placeholder:text-gray-300 border-gray-700 border-[1px] rounded-lg flex-1 md:col-span-5 focus:border-purple outline-none"
           />
-          <Button className="bg-blue-dark gap-2 text-gray-100 h-[54px] md:col-span-1 focus:border-purple outline-none">
+          <Button
+            className="bg-blue-dark gap-2 text-gray-100 h-[54px] md:col-span-1 focus:border-purple outline-none"
+            type="submit"
+          >
             <span className="text-base">Criar</span>
             <PlusCircle width={16} height={16} className="" />
           </Button>
-        </div>
+        </form>
 
         <div className="flex flex-col mt-16">
           <div className="flex justify-between">
@@ -62,7 +81,7 @@ export default function Home() {
                 Tarefas criadas
               </span>
               <span className="bg-gray-400 text-gray-200 px-2 py-[2px] rounded-full">
-                0
+                {tasks.length}
               </span>
             </div>
             <div className="flex gap-2 items-center">
@@ -70,7 +89,7 @@ export default function Home() {
                 Concluídas
               </span>
               <span className="bg-gray-400 text-gray-200 px-2 py-[2px] rounded-full">
-                0
+                {tasks ? `${amountDoneTasks} de ${tasks.length}` : `0`}
               </span>
             </div>
           </div>
