@@ -5,10 +5,11 @@ import './globals.css'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  weight: ['400', '700'],
 })
 
 export const metadata: Metadata = {
-  title: 'To Do List',
+  title: 'to do list',
 }
 
 export default function RootLayout({
