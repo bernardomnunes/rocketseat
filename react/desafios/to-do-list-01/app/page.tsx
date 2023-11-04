@@ -30,14 +30,14 @@ export default function Home() {
     setTasks(newTasks)
   }
 
-  function handleDeleteTask(id: string) {
-    const newTasks = tasks.filter((task) => {
-      if (task.id === id) {
-        return
-      }
-      return task
-    })
-  }
+  // function handleDeleteTask(id: string) {
+  //   const newTasks = tasks.filter((task) => {
+  //     if (task.id === id) {
+
+  //     }
+  //     return task
+  //   })
+  // }
 
   return (
     <>
