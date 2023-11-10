@@ -1,11 +1,12 @@
 import React from 'react'
 import { Coffee, Package, ShoppingCart, Timer } from 'lucide-react'
 import Image from 'next/image'
+import CoffeeWrapper from '@/components/coffee-wrapper'
 
 const Home = () => {
   return (
     <>
-      <div className="flex gap-11">
+      <div className="flex gap-11 mb-36">
         <div className="flex flex-col gap-16 w-full">
           <div className="flex flex-col gap-4">
             <strong className="text-5xl font-baloo">
@@ -51,6 +52,9 @@ const Home = () => {
 
         <Image src="/coffee.svg" width={476} height={360} alt="" />
       </div>
+
+      <strong className="text-4xl font-baloo">Nossos cafés</strong>
+      <CoffeeWrapper />
     </>
   )
 }
