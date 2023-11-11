@@ -1,3 +1,4 @@
+import { Cart } from '@/components/cart'
 import { MapPin } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -15,7 +16,7 @@ const layout = ({ children }: { children: ReactNode }) => {
             <MapPin className="h-5 w-5 text-purple" fillRule="evenodd" />
             <span className="text-purple-dark">Porto Alegre, RS</span>
           </div>
-          <span>cart</span>
+          <Cart />
         </div>
       </header>
       {children}
