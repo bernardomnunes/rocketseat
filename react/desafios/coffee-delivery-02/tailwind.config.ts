@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        baloo: ['var(--font-ballo-2)'],
+        baloo: ['var(--font-baloo-2)'],
         roboto: ['var(--font-roboto)'],
       },
       colors: {

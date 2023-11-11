@@ -11,7 +11,7 @@ const roboto = Roboto({
 const baloo2 = Baloo2({
   subsets: ['latin'],
   weight: ['700', '800'],
-  variable: '--font-ballo-2',
+  variable: '--font-baloo-2',
 })
 
 export const metadata: Metadata = {
