@@ -24,10 +24,28 @@ export const useStore = create<CoffeeState>((set, get) => {
       const { wishCoffees } = get()
 
       if (wishCoffees) {
-        set((state) => ({
-          wishCoffees: [...wishCoffees, { ...data }],
-          cartQuantity: state.cartQuantity + 1,
-        }))
+        const objectExisted = wishCoffees.find((coffee) => {
+          return coffee.id === data.id
+        })
+
+        const newCoffeesArray = wishCoffees.map((coffee) => {
+          if (coffee.id === objectExisted?.id) {
+            return { ...coffee, quantity: coffee.quantity + data.quantity }
+          } else {
+            return coffee
+          }
+        })
+
+        if (objectExisted) {
+          set(() => ({
+            wishCoffees: newCoffeesArray,
+          }))
+        } else {
+          set((state) => ({
+            wishCoffees: [...wishCoffees, { ...data }],
+            cartQuantity: state.cartQuantity + 1,
+          }))
+        }
       } else {
         set((state) => ({
           wishCoffees: [{ ...data }],

@@ -1,14 +1,22 @@
+'use client'
+
 import React from 'react'
 import { Coffee } from '@/data/types/coffee'
 import Image from 'next/image'
 import { CountButton } from './count-button'
 import { CoffeeSubmitButton } from './coffee-submit-button'
+import { CoffeeFormProvider } from '@/context/coffee-form-context'
+import { useStore } from '@/store'
 
 interface CoffeeProps {
   coffee: Coffee
 }
 
 export const CoffeeCard = ({ coffee }: CoffeeProps) => {
+  const { wishCoffees } = useStore()
+
+  console.log(wishCoffees)
+
   return (
     <div
       key={coffee.id}
@@ -51,8 +59,10 @@ export const CoffeeCard = ({ coffee }: CoffeeProps) => {
         </div>
 
         <div className="flex gap-2">
-          <CountButton />
-          <CoffeeSubmitButton />
+          <CoffeeFormProvider>
+            <CountButton />
+            <CoffeeSubmitButton coffee={coffee} />
+          </CoffeeFormProvider>
         </div>
       </div>
     </div>
