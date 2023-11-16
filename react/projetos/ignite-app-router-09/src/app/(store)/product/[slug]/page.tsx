@@ -12,6 +12,7 @@ interface ProductProps {
 }
 
 async function getProduct(slug: string): Promise<Product> {
+  // chamada para api em cache
   const response = await api(`/products/${slug}`, {
     next: {
       revalidate: 60 * 60, // 1 hour
@@ -34,6 +35,7 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
+  // O html em cache
   const response = await api('/products/featured')
   const products: Product[] = await response.json()
 
