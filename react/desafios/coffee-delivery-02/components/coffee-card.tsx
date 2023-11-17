@@ -16,7 +16,7 @@ export const CoffeeCard = ({ coffee }: CoffeeProps) => {
       className="flex flex-col items-center bg-base-card rounded-tl-md px-5 pb-5 rounded-br-md rounded-bl-[36px] rounded-tr-[36px] w-[256px] "
     >
       <Image
-        src={`/${coffee.image}`}
+        src={coffee.image}
         width={120}
         height={120}
         quality={100}
