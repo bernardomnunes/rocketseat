@@ -50,7 +50,7 @@ export default function Home() {
             </label>
             <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2">
               <Input.Root>
-                <Input.Control id="firstName" defaultValue="Diego" />
+                <Input.Control id="firstName" defaultValue="Bernardo" />
               </Input.Root>
 
               <div className="flex flex-col gap-3 lg:block">
@@ -62,7 +62,7 @@ export default function Home() {
                 </label>
 
                 <Input.Root>
-                  <Input.Control id="lastName" defaultValue="Fernandes" />
+                  <Input.Control id="lastName" defaultValue="Nunes" />
                 </Input.Root>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default function Home() {
               <Input.Control
                 id="email"
                 type="email"
-                defaultValue="diego@rocketseat.com.br"
+                defaultValue="bmn02@outlook.com"
               />
             </Input.Root>
           </div>
